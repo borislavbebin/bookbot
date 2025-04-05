@@ -10,7 +10,11 @@ def get_book_text(path):
     return file_contents
 
 def main():
-    book_contents = get_book_text(os.path.abspath("./books/frankenstein.txt"))
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    
+    book_contents = get_book_text(os.path.abspath(sys.argv[1]))
     words_count = get_words_num(book_contents)
     symbols = get_symbols_count(book_contents)
     sorted_symbols = get_sorted(symbols)
